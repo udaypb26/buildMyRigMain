@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title> <%=title%></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/interface-icons.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/theme.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/custom.css" rel="stylesheet" type="text/css" media="all"/>
+		<link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700|Montserrat:400,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+    </head>
+    <body data-reveal-selectors="section:not(.masonry):not(:first-of-type):not(.parallax)"  >
+
+				
+		<div class="nav-container">
+		</div>
+		
+		<div class="main-container">
+		<section class="subscribe subscribe-5 bg--secondary"  style="background-color:black">
+		                <div class="container">
+		                    <div class="row">
+		                        <div class="col-md-5 col-md-offset-1 col-sm-6">
+		                            <div class="form-subscribe-1 boxed boxed--lg bg--white box-shadow-wide">
+		                                <div class="subscribe__title text-center">
+		                                    <h4>Signup</h4>
+		                                    <p class="">
+		                                        Create account | Select components | Buy them from amazon 
+		                                    </p>
+		                                </div>
+		                                <form   id="signupForm">
+		                                    <div class="input-with-icon">
+		                                        <label for="fieldName">Your username</label>
+		                                        <i class="fa fa-user"></i>
+		                                        <input id="username" name="cm-name" type="text" required>
+		                                    </div>
+		                                    <div class="input-with-icon">
+		                                        <label for="fieldEmail">Email Address</label>
+		                                        <i class="fa  fa-envelope"></i>
+		                                        <input class="validate-required validate-email" id="email" name="cm-kieth-kieth" type="email" required="true">
+											</div>
+											<div class="input-with-icon">
+													<label for="fieldEmail">Password</label>
+													<i class="fa  fa-key"></i>
+													<input class="validate-required " id="password" name="cm-kieth-kieth" type="password" required="true">
+												</div>
+												<div class="input-with-icon">
+														<label for="fieldEmail">Confirm password</label>
+														<i class="fa  fa-key"></i>
+														<input class="validate-required validate-email" id="password_confirm" name="cm-kieth-kieth" type="password" required="true">
+													</div>
+		                                    <button type="submit" onclick="signup(event)">Subscribe Now</button>
+		                                </form>
+		                            </div>
+		                        </div>
+		                        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-1">
+									<img src="/images/loginBanner2.png" style="width:500px;max-width: 500px">
+									<img src="/images/login2.gif" style="width:500px;max-width: 400px">
+		                        </div>
+		                    </div>
+		                    
+		                </div>
+		                
+		            </section></div>
+		
+				
+		<script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/scrollreveal.min.js"></script>
+        <script src="js/parallax.js"></script>
+		<script src="js/scripts.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
+		<script>
+		$(document).ready(function(){
+
+
+$("#signupForm").validate({
+	rules: {
+		email: {
+			required: true
+		},
+		password: {
+			minlength : 5,
+			required: true
+		},
+		password_confirm : {
+                    minlength : 5,
+                    equalTo : "#password"
+                }
+	},
+	messages: {
+		email: {
+			required: "specify email"
+		},
+		password: {
+			required: "specify password"
+		},
+		password_confirm:{
+			required: "password does not match!"
+		}
+	}
+});
+
+});
+function signup(e){
+	e.preventDefault();
+	var username=$('#username').val();
+	var email=$('#email').val();
+	var pass=$('#password').val();
+	var data={username:username,email:email,pass:pass};
+	var auth=firebase.auth();
+	// $.ajax({
+    //         type: "POST",
+    //         url: '/signup',
+    //         data: JSON.stringify(data),
+    //         dataType: "json",
+    //         contentType: "application/json",
+    //         Accept: 'application/json; charset=utf-8'
+    //       }).then(function () {
+    //       alert('sent')
+    //       }).fail(function () {
+            
+	//       });
+	const promise=auth.createUserWithEmailAndPassword(email,pass);
+	promise
+	.then(()=>alert('signup successful'))
+	.catch(e=>console.log('error logging in ',e.message));
+	//get this user to dashboard
+	window.location('/dashboard');
+}
+
+
+
+		
+		</script>
+		<script  src="/javascripts/firebaseSetup.js"></script>
+    </body>
+</html>
+				

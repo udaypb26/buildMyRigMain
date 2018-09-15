@@ -1,0 +1,89 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title><%=title%></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/iconsmind.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/interface-icons.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/owl.carousel.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/theme.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href="css/custom.css" rel="stylesheet" type="text/css" media="all"/>
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,400italic,700|Montserrat:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        
+		<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
+    </head>
+    <body data-reveal-selectors="section:not(.masonry):not(:first-of-type):not(.parallax)">
+
+				
+		<div class="nav-container">
+		</div>
+		
+		<div class="main-container">
+	<section style="background-color:black">
+		                <div class="container">
+		                    <div class="row">
+		                        <div class="col-md-6 col-md-offset-3 col-sm-6">
+		                            <div class="form-subscribe-1 boxed boxed--lg bg--white box-shadow-wide">
+		                                <div class="subscribe__title text-center">
+		                                    <h4>Login</h4>
+		                                </div>
+		                                <form   id="loginForm">
+		                                    <div class="input-with-icon">
+		                                        <label for="fieldEmail">Email Address</label>
+		                                        <i class="fa  fa-envelope"></i>
+		                                        <input class="validate-required validate-email" id="email" name="cm-kieth-kieth" type="email" required="true">
+											</div>
+											<div class="input-with-icon">
+													<label for="fieldEmail">Password</label>
+													<i class="fa  fa-key"></i>
+													<input class="validate-required " id="password" name="cm-kieth-kieth" type="password" required="true">
+												</div>
+		                                    <button  onclick="login(event)" class="btn btn-primary">Login</button>
+		                                </form>
+		                            </div>
+		                        </div>
+		                    </div>
+		                    
+		                </div>
+		                
+		            </section></div>
+		
+				
+		<script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/scrollreveal.min.js"></script>
+        <script src="js/parallax.js"></script>
+        <script src="js/scripts.js"></script>
+        <script>
+ function login(e){
+	e.preventDefault();
+	
+	var email=$('#email').val();
+	var pass=$('#password').val();
+	var auth=firebase.auth();
+	// $.ajax({
+    //         type: "POST",
+    //         url: '/signup',
+    //         data: JSON.stringify(data),
+    //         dataType: "json",
+    //         contentType: "application/json",
+    //         Accept: 'application/json; charset=utf-8'
+    //       }).then(function () {
+    //       alert('sent')
+    //       }).fail(function () {
+            
+	//       });
+	const promise=auth.signInWithEmailAndPassword(email,pass);
+	promise
+	.then(()=>alert('login success'))
+	.catch(e=>console.log('error logging in ',e.message));
+}
+        </script>
+        	<script  src="javascripts/firebaseSetup.js"></script>
+    </body>
+</html>
+				
