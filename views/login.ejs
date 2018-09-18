@@ -59,6 +59,7 @@
         <script src="js/parallax.js"></script>
         <script src="js/scripts.js"></script>
         <script>
+			var user;
  function login(e){
 	e.preventDefault();
 	
@@ -79,7 +80,17 @@
 	//       });
 	const promise=auth.signInWithEmailAndPassword(email,pass);
 	promise
-	.then(()=>alert('login success'))
+	.then(function(data){
+		alert('login success')
+		// console.log(user)
+		firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+  // Send token to your backend via HTTPS
+  // ...
+  window.location='/selection?user='+idToken;
+}).catch(function(error) {
+  // Handle error
+});
+	})
 	.catch(e=>console.log('error logging in ',e.message));
 }
         </script>
