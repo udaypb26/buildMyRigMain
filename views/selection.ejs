@@ -102,14 +102,26 @@
         <script>
             var userData=<%-JSON.stringify(userData)%>
         function redirectTo(id){
-            //get firebase auth token here:
-            firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-  // Send token to your backend via HTTPS
-  // ...
-}).catch(function(error) {
+            if(id=='build'){
+                //get firebase auth token here:
+                firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+                // Send token to your backend via HTTPS
+                // ...
+                            window.location='/build?user='+idToken;
+            
+        }).catch(function(error) {
   // Handle error
 });
-
+}else{
+    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+                // Send token to your backend via HTTPS
+                // ...
+                            window.location='/build?user='+idToken;
+            
+        }).catch(function(error) {
+  // Handle error
+});
+}
         }
         </script>
           	<script  src="javascripts/firebaseSetup.js"></script>

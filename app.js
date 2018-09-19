@@ -48,5 +48,5 @@ app.use('/users', usersRouter);
 //   res.status(err.status || 500);
 //   res.render('error');
 // });
-
+console.log('server started successfully...')
 module.exports = app;
