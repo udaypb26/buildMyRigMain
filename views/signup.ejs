@@ -16,16 +16,11 @@
 		<script src="https://www.gstatic.com/firebasejs/5.5.0/firebase.js"></script>
     </head>
     <body data-reveal-selectors="section:not(.masonry):not(:first-of-type):not(.parallax)"  >
-
-				
-		<div class="nav-container">
-		</div>
-		
 		<div class="main-container">
 		<section class="subscribe subscribe-5 bg--secondary"  style="background-color:black">
 		                <div class="container">
 		                    <div class="row">
-		                        <div class="col-md-5 col-md-offset-1 col-sm-6">
+		                        <div class="col-md-5 col-md-offset-1">
 		                            <div class="form-subscribe-1 boxed boxed--lg bg--white box-shadow-wide">
 		                                <div class="subscribe__title text-center">
 		                                    <h4>Signup</h4>
@@ -58,9 +53,9 @@
 		                                </form>
 		                            </div>
 		                        </div>
-		                        <div class="col-md-3 col-md-offset-1 col-sm-4 col-sm-offset-1">
-									<img src="/images/loginBanner2.png" style="width:500px;max-width: 500px">
-									<img src="/images/login2.gif" style="width:500px;max-width: 400px">
+		                        <div class="col-md-5">
+									<img src="/images/loginBanner2.png" style="width:100%;">
+									<img src="/images/login2.gif" style="width:100%;">
 		                        </div>
 		                    </div>
 		                    
@@ -75,9 +70,8 @@
 		<script src="js/scripts.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.js"></script>
 		<script>
-		$(document).ready(function(){
 
-
+$(document).ready(function(){
 $("#signupForm").validate({
 	rules: {
 		email: {
@@ -104,8 +98,8 @@ $("#signupForm").validate({
 		}
 	}
 });
-
 });
+
 function signup(e){
 	e.preventDefault();
 	var username=$('#username').val();
@@ -134,8 +128,6 @@ function signup(e){
 }
 
 
-
-		
 		</script>
 		<script  src="/javascripts/firebaseSetup.js"></script>
     </body>
